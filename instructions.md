@@ -78,7 +78,7 @@ Utilisez vos technique de remontée de state pour changer le prénom de chaque a
 Une fois cette mission réalisée, vous vous rendez compte que c'est pas drôle pour Gaietcho. Utilisez une ressource sur les contextes pour améliorer la situation.
 
 https://react.dev/learn/passing-data-deeply-with-context
-
+commit inetermediaire
 ### C'est pas encore la joie infinie...
 
 Oui, c'est le temps des enfants rois... Dans ce cadre là, même les futurs développeurs sont très rapidement frustrés...
