@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import ArriereGrandPere from './ArriereGrandPere';
+import { FrereContext } from './FrereContext';
+import GrandPere from './GrandPere';
+import Pere from './Pere';
+
 
 const App: React.FC = () => {
-  const [prenomDeLaFamille] = useState("Geoffroy"); 
+  const [prenomDeLaFamille, setNouveauPrenom] = useState("Patate"); 
 
   return (
     <div className="App">
-      <ArriereGrandPere prenom={prenomDeLaFamille} />
+      <FrereContext.Provider value={{
+        prenom: prenomDeLaFamille,
+        changePrenom: setNouveauPrenom
+      }}>
+        <ArriereGrandPere />
+      </FrereContext.Provider>
     </div>
   );
 }

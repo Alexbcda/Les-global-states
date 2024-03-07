@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { FrereContext } from './FrereContext';
 
-interface FrereProps {
-  prenom: string;
-  onChangePrenom: (nouveauPrenom: string, niveau: number) => void;
-}
-
-const Frere: React.FC<FrereProps> = (props) => {
+const Frere: React.FC = () => {
+  const { prenom, changePrenom } = useContext(FrereContext);
   const [nouveauPrenom, setNouveauPrenom] = useState('');
 
   const handleChangePrenom = () => {
     if (nouveauPrenom.trim() !== '') {
-      props.onChangePrenom(nouveauPrenom, 2); // 2 représente le niveau du GrandPere
+      changePrenom(nouveauPrenom);
       setNouveauPrenom('');
     }
   };
 
   return (
     <div className="Frere">
-      <h2>Frere: {props.prenom}</h2>
+      <h2>Frere: {prenom}</h2>
       <label>
         Nouveau prénom:
         <input
