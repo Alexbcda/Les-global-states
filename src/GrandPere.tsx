@@ -1,17 +1,17 @@
-import React, { useContext, useState } from 'react';
-import { FrereContext } from './FrereContext';
-import Pere from './Pere';
+import { userFamilyStore } from "./App";
+import Pere from "./Pere";
+
+export default function GrandPere (){
+
+  const {prenom} = userFamilyStore()
 
 
 
-const GrandPere: React.FC = () => {
-  const prenom = useContext(FrereContext).prenom
-  return (
-    <div className="GrandPere">
-      <h2>GrandPere: {prenom}</h2>
-      <Pere />
-    </div>
-  );
-};
+return (
 
-export default GrandPere;
+  <div>
+    <h1> Grand Père : {prenom}</h1>
+  <Pere/>
+  </div>
+)
+}

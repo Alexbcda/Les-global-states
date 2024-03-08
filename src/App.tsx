@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
 import ArriereGrandPere from './ArriereGrandPere';
-import { FrereContext } from './FrereContext';
-import GrandPere from './GrandPere';
-import Pere from './Pere';
+import {create} from 'zustand'
 
 
-const App: React.FC = () => {
-  const [prenomDeLaFamille, setNouveauPrenom] = useState("Patate"); 
+interface FamilyState {
+prenom: string;
+setPrenom: (newPrenom: string) => void;
+}
 
+export const userFamilyStore  = create <FamilyState>((set) => ({
+  prenom: "Jean",
+  setPrenom: (newPrenom) => set ((state) => ({prenom : newPrenom})),
+}));
+
+function App () {
   return (
-    <div className="App">
-      <FrereContext.Provider value={{
-        prenom: prenomDeLaFamille,
-        changePrenom: setNouveauPrenom
-      }}>
-        <ArriereGrandPere />
-      </FrereContext.Provider>
-    </div>
+    <>
+    <ArriereGrandPere/>
+    </>
   );
 }
 

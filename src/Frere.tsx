@@ -1,31 +1,23 @@
-import React, { useContext, useState } from 'react';
-import { FrereContext } from './FrereContext';
+import React, { useState } from "react";
+import { userFamilyStore } from "./App";
 
-const Frere: React.FC = () => {
-  const { prenom, changePrenom } = useContext(FrereContext);
-  const [nouveauPrenom, setNouveauPrenom] = useState('');
+export default function Frere() {
+  const { prenom, setPrenom } = userFamilyStore();
+  const [newPrenom, setNewPrenom] = useState<string>(prenom);
 
-  const handleChangePrenom = () => {
-    if (nouveauPrenom.trim() !== '') {
-      changePrenom(nouveauPrenom);
-      setNouveauPrenom('');
-    }
+  const handleChangePrenom = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewPrenom(e.target.value);
+  };
+
+  const handleUpdatePrenom = () => {
+    setPrenom(newPrenom);
   };
 
   return (
-    <div className="Frere">
-      <h2>Frere: {prenom}</h2>
-      <label>
-        Nouveau prénom:
-        <input
-          type="text"
-          value={nouveauPrenom}
-          onChange={(e) => setNouveauPrenom(e.target.value)}
-        />
-      </label>
-      <button onClick={handleChangePrenom}>Changer le prénom</button>
+    <div>
+      <h1>Frere : {prenom}</h1>
+      <input type="text" value={newPrenom} onChange={handleChangePrenom} />
+      <button onClick={handleUpdatePrenom}>Mettre à jour le prénom</button>
     </div>
   );
-};
-
-export default Frere;
+}
